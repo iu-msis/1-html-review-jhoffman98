@@ -7,6 +7,8 @@
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
  <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+ <script src="https://unpkg.com/vue@next"></script>
+ <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
  
  <link href="style.css" rel="stylesheet" type="text/css" />
 	
@@ -32,14 +34,22 @@
 	</nav>
  
 	<title>About me </title>
+	<h3>About Me:
+		
+	</h3>
 	
-	<h2>
-		<span class = "red"> Hello I'm LeBron </span>
-	</h2>
 	
-	<div>
+	<div id= "personApp"> 
+		<span class = "red"> Hello I'm {{person.name.first}} </span>
+	
+		<p></p>
+		Hometown: {{person.location.country}}
+	
+
+	
+		
 	<p> 
-		My name is LeBron James I Like to play basketball
+		My name is {{person.name.first}} {{person.name.last}} I Like to play basketball
 	<br>
 		I play a lot of basketball and do a lot of charity.
 	<br> 
@@ -47,21 +57,28 @@
 	<br>
 		I'm the best on the planet and have to work super hard everyday. 
 	</p>
-	
+
+		
 	<p>
+		
 		Here's a list of personal information on me don't steal my identity please.
-		<li> Birthday: 12/30/1984</li>
-		<li>Age: 36 </li>
-		<li>Hometown: Akron Ohio, USA </li>
-		<li>Email: <a href="mailto:lebronjames236@betterthanmike.com"> lebronjames236@betterthanmike.com</a></li>
+		<li> Name: {{person.name.first}} {{person.name.last}}</li>
+		<li>Date of Birth: {{prettyBirthday}}</li>
+		<li>Age: {{person.registered.age}} </li>
+		<li>Hometown: {{person.location.country}} </li>
+		<li>Email: <a href=mailto:> {{person.email}}</a></li>
+		
 	</p>
 		
-	<h2>Here is a picture of me</h2>
+	<h1>Here is a picture of me</h1>
 	
-	<p>
-		<img src="img/legoat.jpeg" alt="lebron">
-	</p>
+	
+		<a v-bind:href="person.picture.large"><img class="img-thumbnail" v-bind:src="person.picture.large"></a>
+	</div>
 </div>
+<script src= "js/tablesort.min.js"></script> 
+<script src= "js/index.js"></script> 
+
 
 </body>
 </html>
