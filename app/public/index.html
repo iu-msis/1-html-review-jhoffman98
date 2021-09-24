@@ -74,6 +74,10 @@
 	
 	
 		<a v-bind:href="person.picture.large"><img class="img-thumbnail" v-bind:src="person.picture.large"></a>
+
+		<form v-on:submit.prevent="fetchUserData">
+			<button type="submit">Refresh</button>
+		</form>
 	</div>
 </div>
 <script src= "js/tablesort.min.js"></script> 
