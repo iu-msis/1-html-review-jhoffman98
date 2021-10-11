@@ -1,23 +1,19 @@
-const ppl = {
+const bookApp = {
     data() {
       return {
-        "person": {},
-        
+        books: [],
         }
     },
     computed: {
-        prettyBirthday() {
-            return dayjs(this.person.dob.date)
-            .format('D MMM YYYY');
-        }
+        
     },
     methods: {
-        fetchUserData() {
-            fetch('https://randomuser.me/api/')
+        fetchBookData() {
+            fetch('api/books/')
             .then(response => response.json())
             .then((parsedJson) => {
                 console.log(parsedJson);
-                this.person = parsedJson.results[0]
+                this.books = parsedJson;
                 console.log("C");
             })
             .catch( err => {
@@ -28,8 +24,8 @@ const ppl = {
         }
     },
     created() {
-        this.fetchUserData();
+        this.fetchBookData();
     }
   }
   
-Vue.createApp(ppl).mount('#personApp');
+Vue.createApp(bookApp).mount('#booksApp');

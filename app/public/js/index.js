@@ -1,6 +1,7 @@
 const ppl = {
     data() {
       return {
+        books : [],  
         "person": {},
         
         }
@@ -12,6 +13,10 @@ const ppl = {
         }
     },
     methods: {
+        prettyDollar(n) {
+            const d = new Intl.NumberFormat("en-US").format(n);
+            return "$ " + d;
+        },
         fetchUserData() {
             fetch('https://randomuser.me/api/')
             .then(response => response.json())
@@ -25,7 +30,9 @@ const ppl = {
             })
 
             console.log("B");
-        }
+        },
+       
+
     },
     created() {
         this.fetchUserData();
