@@ -31,17 +31,17 @@ $db = DbConnection::getConnection();
 // Step 2: Create & run the query
 // Note the use of parameterized statements to avoid injection
 $stmt = $db->prepare(
-  'INSERT INTO offer (id, title, author, pyear, pub, pcount, msrp)
-  VALUES (?, ?, ?, ?, ?, ?, ?)'
+  'INSERT INTO books (title, author, pyear, pub, pcount, msrp)
+  VALUES (?, ?, ?, ?, ?, ?)'
 );
 
 $stmt->execute([
-  $_POST['id'],
+  
   $_POST['title'],
   $_POST['author'],
   $_POST['pyear'],
-  $_POST['pub']
-  $_POST['pcount']
+  $_POST['pub'],
+  $_POST['pcount'],
   $_POST['msrp']
 ]);
 
@@ -53,4 +53,4 @@ $stmt->execute([
 // Here, instead of giving output, I'm redirecting to the SELECT API,
 // just in case the data changed by entering it
 header('HTTP/1.1 303 See Other');
-header('Location: ../offer/?student=' . $_POST['id']);
+header('Location: ../books/index.php' );

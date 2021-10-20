@@ -37,7 +37,7 @@
 
   
 
-<table id="booksApp" class="table">
+<table class="table">
   <thead>
     <tr>
       <th>ID</th>
@@ -61,14 +61,52 @@
         </tr>
     </tbody>
 </table>
-</div>
 
+<div>
+  <form v-on:submit.prevent="postNewBook"><!--index.js-->
+    <div class="mb-3">
+      <!--every input needs to have a label, label tag makes it clickable-->
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" v-model="bookForm.title"> <!--vmodel enable the two way bind-->
+    </div>
+    <div class="mb-3">
+      <label for="author" class="form-label">Author</label>
+      <!--type adds constrains for the input-->
+      <input type="text" class="form-control" v-model="bookForm.author" id="author">
+    </div>
+    <div class="mb-3">
+      <label for="yearpublished" class="form-label">Year Published</label>
+      <input type="number" v-model="bookForm.pyear" class="form-control" id="pyear">
+    </div>
+    <div class="mb-3">
+      <label for="publisher" class="form-label">Publisher</label>
+      <!--type adds constrains for the input-->
+      <input type="text" class="form-control" v-model="bookForm.pub" id="pub">
+    </div>
+    <div class="mb-3">
+      <label for="pagecount" class="form-label">Page Count</label>
+      <!--type 'date' automarically gives you a calender-->
+      <input type="number" v-model="bookForm.pcount" class="form-control" id="pcount">
+    </div>
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label for="mspr"><span class="input-group-text">$</span></label>
+      </div>
+      <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" v-model="bookForm.msrp" id="msrp">
+      <div class="input-group-append">
+        <span class="input-group-text"></span>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+</div>
+</form>
+</div>
+</div>
 <div>
   <script src="https://unpkg.com/vue@next"></script>
   <script src='js/tablesort.min.js'></script>
   <script>new Tablesort(document.getElementById('tableTask'));</script>
-  <script src='tablesort.number.js'></script>
-  <script src='tablesort.date.js'></script>
   <script src='js/books.js'></script>
 </div>
 

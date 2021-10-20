@@ -2,6 +2,7 @@ const bookApp = {
     data() {
       return {
         books: [],
+        bookForm:{}
         }
     },
     computed: {
@@ -25,12 +26,35 @@ const bookApp = {
             })
 
             console.log("B");
+        },
+        postNewBook(evt) { //event handler for form submission, event object is the default 
+            //select the student id and add another offer into this student     
+            console.log("Posting:", this.bookForm);
+            alert("Posting!");
+    
+            fetch('api/books/create.php', {
+                method:'POST',
+                body: JSON.stringify(this.bookForm),
+                headers: {
+                "Content-Type": "application/json; charset=utf-8"
+                }
+            })
+            .then( response => response.json() )
+            .then( json => {
+                console.log("Returned from post:", json);
+                // TODO: test a result was returned!
+                this.books = json;
+                
+                // reset the form
+                this.bookForm = {};
+            });
         }
     },
     created() {
         this.fetchBookData();
     }
-  }
+    
+}
 
   
 Vue.createApp(bookApp).mount('#booksApp');
