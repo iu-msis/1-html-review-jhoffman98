@@ -60,8 +60,8 @@
             <td>{{ prettyDollar(b.msrp) }}</td>
             <td>
               
-              <button type="button" v-on:click="selectBook(book)" class="btn btn-outline-secondary btn-sm">Edit</button>
-              <button type="button" v-on:click="postDeleteBook(book)" class="btn btn-outline-secondary btn-sm">Delete</button>
+              <button type="button" v-on:click="handleEditBook(b)" class="btn btn-outline-secondary btn-sm">Edit</button>
+              <button type="button" v-on:click="postDeleteBook(b)" class="btn btn-outline-secondary btn-sm">Delete</button>
 
                 
             </td>
@@ -70,7 +70,7 @@
 </table>
 
 <div>
-  <form v-on:submit.prevent="postNewBook"><!--index.js-->
+  <form v-on:submit.prevent="postBook"><!--index.js-->
     <div class="mb-3">
       <!--every input needs to have a label, label tag makes it clickable-->
       <label for="title" class="form-label">Title</label>
