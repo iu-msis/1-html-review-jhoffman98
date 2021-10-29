@@ -58,6 +58,13 @@
             <td>{{ b.pub }}</td>
             <td>{{ b.pcount }}</td>
             <td>{{ prettyDollar(b.msrp) }}</td>
+            <td>
+              
+              <button type="button" v-on:click="selectBook(book)" class="btn btn-outline-secondary btn-sm">Edit</button>
+              <button type="button" v-on:click="postDeleteBook(book)" class="btn btn-outline-secondary btn-sm">Delete</button>
+
+                
+            </td>
         </tr>
     </tbody>
 </table>
@@ -90,7 +97,7 @@
     </div>
     <div class="input-group mb-3">
       <div class="input-group-prepend">
-        <label for="mspr"><span class="input-group-text">$</span></label>
+        <label for="msrp"><span class="input-group-text">$</span></label>
       </div>
       <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)" v-model="bookForm.msrp" id="msrp">
       <div class="input-group-append">
@@ -99,6 +106,7 @@
       <div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </div>
+
 </div>
 </form>
 </div>
